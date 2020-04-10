@@ -1,0 +1,6 @@
+Thông tin sản phẩm gồm : 
+- Mã sản phẩm : 12
+- Tên sản phẩm : l
+- Hãng sản phẩm : l
+- Giá sản phẩm : Not update
+- Các mô tả khác : l
