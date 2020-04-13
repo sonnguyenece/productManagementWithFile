@@ -1,0 +1,49 @@
+Danh sach san pham
+No.  Name    ID    Price Productor   Description
+ 1   Pepsi   psi   5.00    Coca       for kid 
+ 2   Fanta   ft1   5.30    Coca       for kid 
+ 3   Coca    cc1   5.50    Coca       for adult
+
+Danh sach san pham sau khi them san pham "Cocain"
+No.  Name    ID    Price Productor   Description
+ 1   Pepsi   psi   5.00    Coca       for kid 
+ 2   Fanta   ft1   5.30    Coca       for kid 
+ 3   Coca    cc1   5.50    Coca       for adult
+ 4   Cocain  cci   4.50    Coca       for dog only
+
+Sap xep theo ten
+No.  Name    ID    Price Productor   Description
+ 1   Coca    cc1   5.50    Coca       for adult
+ 2   Cocain  cci   4.50    Coca       for dog only
+ 3   Fanta   ft1   5.30    Coca       for kid 
+ 4   Pepsi   psi   5.00    Coca       for kid 
+
+Xoa file co id "ft1"
+No.  Name    ID    Price Productor   Description
+ 1   Coca    cc1   5.50    Coca       for adult
+ 2   Cocain  cci   4.50    Coca       for dog only
+ 3   Pepsi   psi   5.00    Coca       for kid 
+
+Sap xep theo gia tu cao xuong thap 
+No.  Name    ID    Price Productor   Description
+ 1   Coca    cc1   5.50    Coca       for adult
+ 2   Pepsi   psi   5.00    Coca       for kid 
+ 3   Cocain  cci   4.50    Coca       for dog only
+
+Tim kiem ten co chua "a"
+No.  Name    ID    Price Productor   Description
+ 1   Coca    cc1   5.50    Coca       for adult
+ 3   Cocain  cci   4.50    Coca       for dog only
+
+Sap xep theo gia tu thap len cao
+No.  Name    ID    Price Productor   Description
+ 1   Cocain  cci   4.50    Coca       for dog only
+ 2   Pepsi   psi   5.00    Coca       for kid 
+ 3   Coca    cc1   5.50    Coca       for adult
+
+Tim kiem theo id("psi")
+No.  Name    ID    Price Productor   Description
+ 2   Pepsi   psi   5.00    Coca       for kid 
+
+Tim kiem ten co chua "a"
+Can't find that name

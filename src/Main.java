@@ -1,86 +1,77 @@
-import com.sun.xml.internal.ws.handler.ServerSOAPHandlerTube;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Float price = null;
-        Scanner scn = new Scanner(System.in);
+        FileManagement fileManagement = new FileManagement();
+        ProductManagement pm = new ProductManagement();
 
-        System.out.print("Input products's code : ");
-        String productID = scn.nextLine();
-        System.out.print("Input products's name : ");
-        String productName = scn.nextLine();
-        System.out.print("Input production : ");
-        String production = scn.nextLine();
-        System.out.print("Price(input number): ");
-
-        try {
-            price = scn.nextFloat();
-        } catch (Exception e) {
-            System.out.println("Wrong input");
-            e.getMessage();
-            price=-1f;
-        }
-        scn.nextLine();
-        System.out.print("Description : ");
-        String otherDescription = scn.nextLine();
-        String path = "Products.txt";
-        File txt = new File(path);
-        creatFileTxt(txt, path);
-
-        String content = "Thông tin sản phẩm gồm : "
-                + "\n- Mã sản phẩm : " + productID
-                + "\n- Tên sản phẩm : " + productName
-                + "\n- Hãng sản phẩm : " + production
-                + "\n- Giá sản phẩm : " +
-                (price==-1 ? "Not update" :
-                        price.toString() + "$")
-                + "\n- Các mô tả khác : " + otherDescription;
-        writeTxt(txt, content, scn, path);
-    }
-
-    static void creatFileTxt(File file, String path) {
-
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    static void writeTxt(File file, String content, Scanner scn, String path) {
-        FileWriter fileWriter = null;
-        if (file.exists()) {
-            if (file.length() == 0) {
-                try {
-                    fileWriter = new FileWriter(file, true);
-                    fileWriter.write(content);
-                    System.out.println("Write Completed");
-                } catch (Exception e) {
-                    e.getMessage();
-                } finally {
-                    try {
-                        fileWriter.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+        if (!fileManagement.getFileTxt().exists()) {
+            fileManagement.creatNewFile();
+        } else {
+            System.out.println("This file exists.Do you want to change? " +
+                    "(Press \"o\" to override,\"i\" to insert)");
+            Scanner scn = new Scanner(System.in);
+            String confirm = scn.nextLine();
+            if (confirm.equalsIgnoreCase("i")) {
+                fileManagement.creatNewFile();
+                System.out.println("Export to txt completed");
+            } else if (confirm.equalsIgnoreCase("o")) {
+                fileManagement.deleteFile();
+                fileManagement.creatNewFile();
+                System.out.println("Export to txt completed");
             } else {
-                System.out.println("This file contain a content.Do you want to override?(Y)");
-                String answer = scn.next().toLowerCase();
-                if (answer.equals("y")) {
-                    file.delete();
-                    creatFileTxt(file, path);
-                    writeTxt(file, content, scn, path);
-                    return;
-                } else return;
+                System.out.println("------------------------------ End Program ------------------------------");
+                System.exit(0);
             }
-        } else System.out.println("You need to creat a file first!");
+        }
+
+        Product product1 = new Product("psi", "Pepsi", "Coca", 5f, "for kid");
+        Product product2 = new Product("ft1", "Fanta", "Coca", 5.3f, "for kid");
+        Product product3 = new Product("cc1", "Coca", "Coca", 5.5f, "for adult");
+        pm.addProduct(product1);
+        pm.addProduct(product2);
+        pm.addProduct(product3);
+
+        //Hien thi danh sach san pham
+        fileManagement.writeStringToTextFile("Danh sach san pham\n");
+        fileManagement.writeStringToTextFile(pm.toString());
+
+        //Them san pham
+        Product product4 = new Product("cci", "Cocain", "Coca", 4.5f, "for dog only");
+        pm.addProduct(product4);
+        fileManagement.writeStringToTextFile("\nDanh sach san pham sau khi them san pham \"Cocain\"\n");
+        fileManagement.writeStringToTextFile(pm.toString());
+
+        //Sap xep lai theo ten
+        fileManagement.writeStringToTextFile("\nSap xep theo ten\n");
+        pm.sortByName();
+        fileManagement.writeStringToTextFile(pm.toString());
+
+        //Xoa file co id "ft1"
+        fileManagement.writeStringToTextFile("\nXoa file co id \"ft1\"\n");
+        pm.removeWithId("ft1");
+        fileManagement.writeStringToTextFile(pm.toString());
+
+        //Sap xep lai theo gia tu cao len xuong thap
+        fileManagement.writeStringToTextFile("\nSap xep theo gia tu cao xuong thap \n");
+        pm.sortFromHighestPrice();
+        fileManagement.writeStringToTextFile(pm.toString());
+
+        //Tim kiem voi tu khoa "a"
+        fileManagement.writeStringToTextFile("\nTim kiem ten co chua \"a\"\n");
+        fileManagement.writeStringToTextFile(pm.searchByName("a"));
+
+        //Sap xep lai theo gia tu thap len cao
+        fileManagement.writeStringToTextFile("\nSap xep theo gia tu thap len cao\n");
+        pm.sortFromLowestPrice();
+        fileManagement.writeStringToTextFile(pm.toString());
+
+        //Tim kiem theo ID
+        fileManagement.writeStringToTextFile("\nTim kiem theo id(\"psi\")\n");
+        fileManagement.writeStringToTextFile(pm.searchByID("psi"));
+
+        //Tim kiem 1 ten khong ton tai
+        fileManagement.writeStringToTextFile("\nTim kiem ten co chua \"a\"\n");
+        fileManagement.writeStringToTextFile(pm.searchByName("a4"));
     }
 }
