@@ -94,7 +94,8 @@ public class ProductManagement {
         String display = (String.format("%-5s%-8s%-6s%-6s%-12s%-8s\n", "No.", "Name", "ID", "Price", "Productor", "Description"));
         for (int i = 0; i < listProducts.size(); i++) {
             product = listProducts.get(i);
-            if (product.getName().contains(name)) {
+            if (product.getName().toUpperCase().contains(name)||product.getName().toLowerCase().contains(name)
+            ||product.getName().contains(name)) {
                 display += " " + (i + 1) + "   " + product.toString();
                 checkName = true;
             }

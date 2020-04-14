@@ -47,3 +47,13 @@ No.  Name    ID    Price Productor   Description
 
 Tim kiem ten co chua "a4"
 Can't find that name
+
+Tim kiem ten co chua "Co"
+No.  Name    ID    Price Productor   Description
+ 1   Cocain  cci   4.50    Coca       for dog only
+ 3   Coca    cc1   5.50    Coca       for adult
+
+Tim kiem ten co chua "co"
+No.  Name    ID    Price Productor   Description
+ 1   Cocain  cci   4.50    Coca       for dog only
+ 3   Coca    cc1   5.50    Coca       for adult

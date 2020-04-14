@@ -7,6 +7,7 @@ public class Main {
 
         if (!fileManagement.getFileTxt().exists()) {
             fileManagement.creatNewFile();
+            System.out.println(fileManagement.getFileTxt().getAbsolutePath());
         } else {
             System.out.println("This file exists.Do you want to change? " +
                     "(Press \"o\" to override,\"i\" to insert)");
@@ -15,10 +16,13 @@ public class Main {
             if (confirm.equalsIgnoreCase("i")) {
                 fileManagement.creatNewFile();
                 System.out.println("Export to txt completed");
+                System.out.println(fileManagement.getFileTxt().getAbsolutePath());
             } else if (confirm.equalsIgnoreCase("o")) {
                 fileManagement.deleteFile();
                 fileManagement.creatNewFile();
                 System.out.println("Export to txt completed");
+                System.out.println(fileManagement.getFileTxt().getAbsolutePath());
+
             } else {
                 System.out.println("------------------------------ End Program ------------------------------");
                 System.exit(0);
@@ -73,5 +77,13 @@ public class Main {
         //Tim kiem 1 ten khong ton tai
         fileManagement.writeStringToTextFile("\nTim kiem ten co chua \"a4\"\n");
         fileManagement.writeStringToTextFile(pm.searchByName("a4"));
+
+        //Tim kiem voi tu khoa "Co"
+        fileManagement.writeStringToTextFile("\nTim kiem ten co chua \"Co\"\n");
+        fileManagement.writeStringToTextFile(pm.searchByName("Co"));
+
+//        Tim kiem voi tu khoa "co"
+        fileManagement.writeStringToTextFile("\nTim kiem ten co chua \"co\"\n");
+        fileManagement.writeStringToTextFile(pm.searchByName("co"));
     }
 }
