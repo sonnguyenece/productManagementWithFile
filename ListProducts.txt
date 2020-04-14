@@ -45,5 +45,5 @@ Tim kiem theo id("psi")
 No.  Name    ID    Price Productor   Description
  2   Pepsi   psi   5.00    Coca       for kid 
 
-Tim kiem ten co chua "a"
+Tim kiem ten co chua "a4"
 Can't find that name

@@ -71,7 +71,7 @@ public class Main {
         fileManagement.writeStringToTextFile(pm.searchByID("psi"));
 
         //Tim kiem 1 ten khong ton tai
-        fileManagement.writeStringToTextFile("\nTim kiem ten co chua \"a\"\n");
+        fileManagement.writeStringToTextFile("\nTim kiem ten co chua \"a4\"\n");
         fileManagement.writeStringToTextFile(pm.searchByName("a4"));
     }
 }
